@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import React,{useState} from 'react';
 import './App.css';
 
 function App() {
+	//let numbers = [1,222,3]
+
+	const  [numbers, setNumbers] = useState([1,22,3])
+
+	const addNumber = () => {
+	const randNumber =Math.round(Math.random() * 10)
+	setNumbers([...numbers, randNumber])
+	}
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ul>
+				{
+					numbers.map((num, index)=> (
+					<li key={index}>{num}</li>
+					))}
+			</ul>
+			<button onClick={addNumber}>Нове число</button>
     </div>
   );
 }
